@@ -19,17 +19,7 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground mb-4">
               Your trusted marketplace for buying and selling premium laptops with confidence and quality assurance.
             </p>
-           {/*  <div className="flex items-center gap-3">
-              <a href="#" className="p-2 glass-card rounded-lg hover:bg-primary/10 transition-colors">
-                <Github className="h-4 w-4" />
-              </a>
-              <a href="#" className="p-2 glass-card rounded-lg hover:bg-primary/10 transition-colors">
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a href="#" className="p-2 glass-card rounded-lg hover:bg-primary/10 transition-colors">
-                <Linkedin className="h-4 w-4" />
-              </a>
-            </div> */}
+          
           </div>
 
           {/* Quick Links */}
@@ -96,7 +86,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary mt-0.5" />
-                <span>+91 8985756868</span>
+                <span>+91 8985 756 868</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary mt-0.5" />

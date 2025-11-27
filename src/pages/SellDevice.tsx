@@ -1313,46 +1313,6 @@ case "Other": {
           </div>
         </section>
 
-        {/* Benefits Section - unchanged */}
-        <section className="py-12 border-b border-border">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {[
-                {
-                  icon: CheckCircle2,
-                  title: "Quick Process",
-                  description: "Get a quote within 24 hours",
-                },
-                {
-                  icon: DollarSign,
-                  title: "Best Prices",
-                  description: "Competitive market rates",
-                },
-                {
-                  icon: Laptop,
-                  title: "All Brands",
-                  description: "We accept all device brands",
-                },
-              ].map((benefit, index) => (
-                <Card
-                  key={index}
-                  className="glass-card text-center glow-hover animate-scale-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardContent className="pt-6">
-                    <div className="inline-flex p-3 bg-primary/10 rounded-lg mb-4">
-                      <benefit.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="font-semibold mb-2">{benefit.title}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {benefit.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Form Section */}
         <section className="py-20 w-full">
@@ -1527,6 +1487,46 @@ case "Other": {
           </div>
         </section>
 
+        {/* Benefits Section - unchanged */}
+        <section className="py-12 border-b border-border">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {[
+                {
+                  icon: CheckCircle2,
+                  title: "Quick Process",
+                  description: "Get a quote within 24 hours",
+                },
+                {
+                  icon: DollarSign,
+                  title: "Best Prices",
+                  description: "Competitive market rates",
+                },
+                {
+                  icon: Laptop,
+                  title: "All Brands",
+                  description: "We accept all device brands",
+                },
+              ].map((benefit, index) => (
+                <Card
+                  key={index}
+                  className="glass-card text-center glow-hover animate-scale-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <CardContent className="pt-6">
+                    <div className="inline-flex p-3 bg-primary/10 rounded-lg mb-4">
+                      <benefit.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-semibold mb-2">{benefit.title}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {benefit.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
         <Footer />
       </div>
     );

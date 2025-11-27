@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 240 8% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 8% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 189 100% 50%;
+    --primary-foreground: 240 10% 3.9%;
+
+    --secondary: 243 75% 59%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 189 100% 50%;
+    --accent-foreground: 240 10% 3.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 5% 18%;
+    --input: 240 5% 18%;
+    --ring: 189 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom tech gradient colors */
+    --gradient-start: 240 10% 3.9%;
+    --gradient-end: 240 8% 12%;
+    --glow-primary: 189 100% 50%;
+    --glow-secondary: 243 75% 59%;
+    
+    /* Glass morphism */
+    --glass-bg: 240 8% 8% / 0.4;
+    --glass-border: 210 40% 98% / 0.1;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-xl border border-white/10;
+  }
+  
+  .gradient-bg {
+    background: radial-gradient(ellipse at top, hsl(var(--glow-secondary) / 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom, hsl(var(--glow-primary) / 0.1), transparent 50%);
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  .glow-primary {
+    box-shadow: 0 0 40px hsl(var(--glow-primary) / 0.3);
+  }
+  
+  .glow-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .glow-hover:hover {
+    box-shadow: 0 0 40px hsl(var(--glow-primary) / 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

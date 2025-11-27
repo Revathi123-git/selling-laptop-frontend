@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+.env
+.env.local
+.env.production
+.env.development
+
+
+
+
+>>>>>>> 2959aa8883a1f748b07e2c46068ed731b0b6ef9a
 # Logs
 logs
 *.log

@@ -20,9 +20,11 @@ export default function AdminSubmissions() {
   const [submissions, setSubmissions] = useState<DeviceSubmission[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
+ const apiBase = import.meta.env.VITE_API_BASE || "http://localhost:5000";
   useEffect(() => {
-    fetch("http://localhost:5000/api/sell-device")
+   
+
+    fetch(`${apiBase}/api/sell-device`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -103,12 +105,13 @@ export default function AdminSubmissions() {
                       {s.images && s.images.length > 0 ? (
                         <div className="flex flex-wrap gap-2">
                           {s.images.map((img, i) => (
-                            <img
-                              key={i}
-                              src={`http://localhost:5000/uploads/${img}`}
-                              alt="device"
-                              className="w-16 h-16 object-cover rounded"
-                            />
+                           <img
+                                key={i}
+                                src={`${apiBase}/uploads/${img}`}
+                               alt="device"
+                                className="w-16 h-16 object-cover rounded"
+                                 />
+
                           ))}
                         </div>
                       ) : (

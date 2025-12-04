@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Laptop } from "lucide-react";
 import { Button } from "./ui/button";
+import logo from '../assets/logo.png';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { name: "Home", path: "/" },
-    /* { name: "All Laptops", path: "/laptops" }, */
+
      { name: "Sell devices", path: "/sell" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
@@ -19,11 +20,12 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-1 group">
+          <img src={logo} alt="E Scrap Logo" className="w-12 h-12 object-contain rounded-full" />
             <div className="p-2 bg-primary/10 rounded-lg glow-hover">
-              <Laptop className="h-6 w-6 text-primary" />
+               <span className="text-xl font-bold text-gradient">E Scrape Electro</span>
             </div>
-            <span className="text-xl font-bold text-gradient">E scrap</span>
+           
           </Link>
 
           {/* Desktop Navigation */}

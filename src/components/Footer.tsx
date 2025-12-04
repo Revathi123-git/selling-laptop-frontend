@@ -4,6 +4,15 @@ import { Laptop, Mail, Phone, MapPin, Github, Twitter, Linkedin } from "lucide-r
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  // Helper function to format phone numbers as +91 898 575 6868
+  const formatPhone = (number) => {
+    const digits = number.replace(/\D/g, ""); // Remove non-digit characters
+    if (digits.length === 12) {
+      return `+${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5, 8)} ${digits.slice(8, 12)}`;
+    }
+    return number; // fallback
+  };
+
   return (
     <footer className="glass-card border-t mt-20">
       <div className="container mx-auto px-4 py-12">
@@ -19,18 +28,12 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground mb-4">
               Your trusted marketplace for buying and selling premium laptops with confidence and quality assurance.
             </p>
-          
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-             {/*  <li>
-                <Link to="/laptops" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  All Laptops
-                </Link>
-              </li> */}
               <li>
                 <Link to="/sell" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Sell Your Laptop
@@ -86,7 +89,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary mt-0.5" />
-                <span>+91 8985 756 868</span>
+                <span>{formatPhone("+918985756868")}</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary mt-0.5" />

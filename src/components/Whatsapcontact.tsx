@@ -1,7 +1,20 @@
 import { useState, useEffect } from "react";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 export default function WhatsappContact() {
+  const location = useLocation();
+
+  const adminRoutes = [
+  "/admin",
+  "/admin-login",
+  "/AdminSubmissions",
+  "/AdminSettings"
+];
+
+if (adminRoutes.some(route => location.pathname.startsWith(route))) {
+  return null;
+}
   const ownerNumber = "918985756868";
   const message = encodeURIComponent(
     "Hello, I am interested in selling the device"

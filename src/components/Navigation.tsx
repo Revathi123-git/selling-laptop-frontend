@@ -23,7 +23,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center gap-1 group">
           <img src={logo} alt="E Scrap Logo" className="w-12 h-12 object-contain rounded-full" />
             <div className="p-2 bg-primary/10 rounded-lg glow-hover">
-               <span className="text-xl font-bold text-gradient">E Scrape Electro</span>
+               <span className="text-xl font-bold text-gradient">E Scrape Electronics</span>
             </div>
            
           </Link>

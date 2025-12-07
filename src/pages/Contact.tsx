@@ -14,8 +14,8 @@ const Contact = () => {
             <p className="text-xl text-muted-foreground mb-12">Get in touch with our team</p>
             <div className="grid gap-6">
               {[
-                { icon: Mail, title: "Email", value: "krkcomputercare@gmail.com" },
-                { icon: Phone, title: "Phone", value: "+91 8985756868" },
+                { icon: Mail, title: "Email", value: "Escrapeelectronics@gmail.com" },
+                { icon: Phone, title: "Phone", value: "+91 898 575 6868" },
                 { icon: MapPin, title: "Address", value: "Telangana & Andhra Pradesh" },
               ].map((item, i) => (
                 <Card key={i} className="glass-card glow-hover">

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { SiInstagram } from "react-icons/si";
+
 import { useState } from "react";
 import PolicyModal from "./PolicyModal";
 
@@ -197,15 +197,7 @@ You may disable cookies anytime through your browser settings.
                 </button>
 
                 {/* Instagram */}
-                <a
-                  href="https://www.instagram.com/escrapeelectronics?igsh=em81djh0dXprbmV2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <SiInstagram size={20} color="#E4405F" />
-                  <span>Instagram</span>
-                </a>
+             
               </div>
             </div>
           </div>

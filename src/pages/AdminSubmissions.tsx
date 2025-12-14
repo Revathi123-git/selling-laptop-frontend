@@ -22,8 +22,6 @@ export default function AdminSubmissions() {
   const [error, setError] = useState("");
  const apiBase = import.meta.env.VITE_API_BASE || "http://localhost:5000";
   useEffect(() => {
-   
-
     fetch(`${apiBase}/api/sell-device`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");

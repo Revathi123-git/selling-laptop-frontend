@@ -14,6 +14,7 @@ interface DeviceSubmission {
   details?: Record<string, string>;
   images?: string[];
   createdAt: string;
+  status?: "Pending" | "Interested" | "Rejected"; // ✅ ADD THIS
 }
 
 export default function AdminSubmissions() {
@@ -41,6 +42,66 @@ export default function AdminSubmissions() {
         setLoading(false);
       });
   }, []);
+
+  const handleDelete = async (id: string) => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this submission?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    const response = await fetch(`${apiBase}/api/sell-device/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete");
+    }
+
+    // Remove from UI instantly
+    setSubmissions((prev) => prev.filter((item) => item._id !== id));
+
+    alert("Submission deleted successfully");
+  } catch (error) {
+    console.error("Delete error:", error);
+    alert("Error deleting submission");
+  }
+};
+
+const handleReview = async (
+  id: string,
+  decision: "Interested" | "Rejected"
+) => {
+  try {
+    const response = await fetch(
+      `${apiBase}/api/sell-device/review/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ decision }),
+      }
+    );
+
+    if (!response.ok) {
+  const errorData = await response.json();
+  throw new Error(errorData.message || "Failed to update status");
+}
+    // Update UI instantly
+    setSubmissions((prev) =>
+      prev.map((item) =>
+        item._id === id ? { ...item, status: decision } : item
+      )
+    );
+
+    alert("Status updated and email sent successfully");
+  }catch (error: any) {
+  console.error("Review error:", error.message);
+  alert(error.message);
+}
+};
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -70,6 +131,8 @@ export default function AdminSubmissions() {
                   <th className="p-3 border border-gray-700">Details</th>
                   <th className="p-3 border border-gray-700">Images</th>
                   <th className="p-3 border border-gray-700">Submitted At</th>
+                  <th className="p-3 border border-gray-700">Actions</th>
+                  <th className="p-3 border border-gray-700">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -120,6 +183,43 @@ export default function AdminSubmissions() {
                     <td className="p-2 border border-gray-700">
                       {new Date(s.createdAt).toLocaleString()}
                     </td>
+                    <td className="p-2 flex border border-gray-700">
+                      
+  {/* Interested Button */}
+  <button 
+    disabled={s.status === "Interested"}
+    onClick={() => handleReview(s._id, "Interested")}
+    className="m-2 bg-green-600 hover:bg-green-700 px-3 py-1 rounded disabled:opacity-50"
+  >
+    Approve
+  </button>
+
+  {/* Not Interested Button */}
+  <button
+    disabled={s.status === "Rejected"}
+    onClick={() => handleReview(s._id, "Rejected")}
+    className="m-2 bg-yellow-600 hover:bg-yellow-700 px-3 py-1 rounded disabled:opacity-50"
+  >
+    Reject
+  </button>
+                      <button onClick={()=>handleDelete(s._id)} className="m-2 bg-red-600 hover:bg-red-700 px-3 py-1 rounded">
+                       Delete
+                      </button>
+                       
+                    </td>
+                    <td className="p-2 border border-gray-700 text-center">
+  <span
+    className={`px-2 py-1 rounded text-xs font-semibold ${
+      s.status === "Interested"
+        ? "bg-green-600"
+        : s.status === "Rejected"
+        ? "bg-yellow-600"
+        : "bg-gray-600"
+    }`}
+  >
+    {s.status || "Pending"}
+  </span>
+</td>
                   </tr>
                 ))}
               </tbody>

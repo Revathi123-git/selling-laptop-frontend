@@ -1046,7 +1046,7 @@ case "Other": {
      
     setLoading(true);
     try {
-      const apiBase = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+      const apiBase = import.meta.env.VITE_API_BASE;
       const fd = new FormData();
 
       // ✅ Add shared fields safely
